@@ -1,8 +1,13 @@
 package App.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
+
+
 
 @Data //LOMBOK: introduces automatic getters/setters
 @AllArgsConstructor //LOMBOK: automatic constructor
@@ -18,4 +23,7 @@ public class Director {
     int id;
     @Column
     String name;
+    @OneToMany(mappedBy = "director")
+    @JsonManagedReference
+    List<Movie> movies;
 }

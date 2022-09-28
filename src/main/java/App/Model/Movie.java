@@ -1,5 +1,6 @@
 package App.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,4 +28,8 @@ public class Movie {
     String title;
     @Column
     int year;
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name="director_id")
+    Director director;
 }
