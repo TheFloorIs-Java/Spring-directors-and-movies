@@ -23,4 +23,8 @@ public class MovieController {
     public Movie addMovie(@PathVariable int id, @RequestBody Movie m){
         return ms.addMovie(id, m);
     }
+    @PostMapping("movies")
+    public Movie addMovie(@RequestBody Movie m){
+        return ms.addMovie(m);
+    }
 }

@@ -6,9 +6,11 @@ import App.Repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Component
+@Transactional
 public class MovieService {
     MovieRepository mr;
     DirectorService ds;
@@ -23,6 +25,9 @@ public class MovieService {
     public Movie addMovie(int directorID, Movie m){
         Director d = ds.getDirectorById(directorID);
         m.setDirector(d);
+        return mr.save(m);
+    }
+    public Movie addMovie(Movie m){
         return mr.save(m);
     }
     public Movie getMovieById(int id){
